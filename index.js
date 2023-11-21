@@ -1,42 +1,42 @@
-let userdata = document.getElementById("user-data");
+let userdataE1 = document.getElementById("user-data");
 
-const getdata = () => {
-  let displaydataget = localStorage.getItem("user_entries");
+const FINDDATA = () => {
+  let DisplayData = localStorage.getItem("user_entries");
 
-  if (displaydataget) {
-    displaydataget = JSON.parse(displaydataget);
+  if (DisplayData) {
+   DisplayDatat = JSON.parse(DisplayData);
   } else {
-    displaydataget = [];
+    DisplayData = [];
   }
 
-  return displaydataget;
+  return DisplayData;
 };
 
-let user_entries = getdata();
+let user_entries = FINDDATA();
 
 const displaydata = () => {
-  const displaydataget = getdata();
+  const DisplayData = FINDDATA();
 
-  const tabledata = displaydataget
+  const tabledata = DisplayData
     .map((entrydata) => {
-      const namefield = `<td >${entrydata.name}</td>`;
-      const emailfield = `<td >${entrydata.email}</td>`;
-      const passwordfield = `<td >${entrydata.password}</td>`;
-      const dobfield = `<td >${entrydata.dob}</td>`;
-      const tcfield = `<td >${entrydata.tc}</td>`;
+      const NAME = `<td >${entrydata.name}</td>`;
+      const EMAIL = `<td >${entrydata.email}</td>`;
+      const PASSWORD = `<td >${entrydata.password}</td>`;
+      const DOB = `<td >${entrydata.dob}</td>`;
+      const TC = `<td >${entrydata.tc}</td>`;
 
-      const rowfield = `<tr> ${namefield} ${emailfield} ${passwordfield} ${dobfield} ${tcfield} </tr>`;
+      const ROW = `<tr> ${NAME} ${EMAIL} ${PASSWORD} ${DOB} ${TC} </tr>`;
 
-      return rowfield;
+      return ROW;
     })
     .join("\n");
 
   const table = `<table  class = "table-auto w-full" ><tr>
   
-  <th >Name</th>
-  <th >Email</th>
-  <th >Password</th>
-  <th >Dob</th>
+  <th >NAME</th>
+  <th >EMAIL</th>
+  <th >PASSWORD</th>
+  <th >DOB</th>
   <th >Accepted terms?</th>
 
   </tr> ${tabledata} 
@@ -49,22 +49,22 @@ const displaydata = () => {
 const saveuserdata = (event) => {
   event.preventDefault();
 
-  const name = document.getElementById("name").value;
+  const NAME = document.getElementById("name").value;
 
-  const email = document.getElementById("email").value;
+  const EMAIL = document.getElementById("email").value;
 
-  const password = document.getElementById("password").value;
+  const PASSWORD = document.getElementById("password").value;
 
-  const dob = document.getElementById("dob").value;
+  const DOB = document.getElementById("dob").value;
 
-  const tc = document.getElementById("tc").checked;
+  const TC = document.getElementById("tc").checked;
 
   const entry = {
-    name,
-    email,
-    password,
-    dob,
-    tc,
+    NAME,
+    EMAIL,
+    PASSWORD,
+    DOB,
+    TC,
   };
 
   user_entries.push(entry);
